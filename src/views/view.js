@@ -5,6 +5,7 @@ class View {
   append(element) {
     this.viewContainer.append(element)
   }
+
   render(template) {
     this.viewContainer.innerHTML = template
   }
