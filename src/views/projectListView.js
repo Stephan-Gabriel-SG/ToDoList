@@ -1,10 +1,21 @@
 import View from './view'
 import ProjectPlanTask from './projectTaskView'
+import { NewProjectModal } from './modalView'
 
 export default class ProjectList extends View {
-  constructor(container, projectLists) {
+  constructor(container) {
     super(container)
-    this.projectLists = Array.from(projectLists)
+    this.projectLists = Array.from(JSON.parse(localStorage.getItem('db')))
+    this.showProjectList()
+    const addProject = document.getElementById('btn-new-project')
+
+    const newProjectModal = new NewProjectModal(this)
+    addProject.addEventListener('click', () => {
+      newProjectModal.show()
+    })
+  }
+
+  showProjectList() {
     this.projectLists.forEach((projectObj) => {
       const button = document.createElement('button')
       button.textContent = projectObj.projectName
@@ -20,9 +31,20 @@ export default class ProjectList extends View {
       this.append(button)
     })
   }
-  showProjectList() {
-    this.projectLists.forEach((element) => {
-      console.log(element.projectName)
+
+  update(newProjectObj) {
+    this.projectLists = Array.from(JSON.parse(localStorage.getItem('db')))
+    const button = document.createElement('button')
+    button.textContent = newProjectObj.projectName
+    button.setAttribute('id', newProjectObj.projectName)
+    button.setAttribute('class', 'project-item')
+    button.addEventListener('click', () => {
+      new ProjectPlanTask(
+        '#view-container',
+        newProjectObj.projectName,
+        newProjectObj.tasks
+      ).show()
     })
+    this.append(button)
   }
 }
