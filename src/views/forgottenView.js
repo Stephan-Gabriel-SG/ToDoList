@@ -23,15 +23,11 @@ export default class ForgottenTask extends View {
           taskContent.setAttribute('id', `task-${index}`)
           taskContent.classList.add('task')
           this.append(taskContent)
-          new Task(
-            `#task-${index}`,
-            projectObj.projectName,
-            projectObj.tasks[index].title,
-            projectObj.tasks[index].description,
-            projectObj.tasks[index].date,
-            projectObj.tasks[index].priority,
-            projectObj.tasks[index].status
-          ).show()
+          new Task({
+            container: `#task-${index}`,
+            projectName: projectObj.projectName,
+            ...projectObj.tasks[index],
+          }).show()
         }
       }
     })
