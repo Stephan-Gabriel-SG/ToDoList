@@ -1,4 +1,5 @@
-import { TaskModal as EditTaskModal } from './modalView'
+import { deleteTaskHandle } from '../controller'
+import { ConfirmModal, TaskModal as EditTaskModal } from './modalView'
 import View from './view'
 
 export default class Task extends View {
@@ -41,6 +42,25 @@ export default class Task extends View {
           }
         })
     })
+
+    const btnDelete = document.getElementById(`btn-delete-${this.id}`)
+    btnDelete.addEventListener('click', () => {
+      new ConfirmModal({
+        modalTitle: 'Delete',
+        modalContent: `Would you like to delete this task "${this.title}" ?`,
+      })
+        .show()
+        .then((result) => {
+          if (result) {
+            this.delete()
+          }
+        })
+    })
+  }
+
+  delete() {
+    document.getElementById(`task-${this.id}`)?.remove()
+    deleteTaskHandle({ id: this.id, projectName: this.projectName })
   }
 
   edit(editedTask = {}) {
@@ -59,6 +79,7 @@ export default class Task extends View {
       <span class="task-priority">${this.priority}</span>
       <span class="task-status">${this.status}</span>
       <button class='btn-edit' id='btn-edit-${this.id}' >Edit</button>
+      <button class='btn-delete' id='btn-delete-${this.id}' >Delete</button>
       `)
   }
 }
