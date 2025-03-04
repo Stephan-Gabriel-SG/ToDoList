@@ -16,7 +16,7 @@
         "date": "2025-03-01",
         "status": true,
         "description": "Organize the project folders (src, assets, components, etc.).",
-        "priority": "Medium",
+        "priority": "Normal",
         "id": 2
       },
       {
@@ -24,7 +24,7 @@
         "date": "2025-03-02",
         "status": false,
         "description": "Set up Webpack for bundling and Babel for ES6 compatibility.",
-        "priority": "High",
+        "priority": "Urgent",
         "id": 3
       },
       {
@@ -32,7 +32,7 @@
         "date": "2025-03-03",
         "status": false,
         "description": "Develop the homepage using HTML, CSS, and JavaScript.",
-        "priority": "Medium",
+        "priority": "Normal",
         "id": 4
       }
     ]
