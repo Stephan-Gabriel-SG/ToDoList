@@ -1,38 +1,125 @@
-export const createProjectHandle = (event) => {
-  event.preventDefault()
-  const newProject = event.target.elements.project_name.value
-
+export const createProjectHandle = (data) => {
+  const newProject = data.projectName
+  let db
   if (newProject) {
+    db = JSON.parse(localStorage.getItem('db'))
+    localStorage.setItem(
+      'db',
+      JSON.stringify(
+        db.concat({ id: db.length + 1, projectName: newProject, tasks: [] })
+      )
+    )
+  }
+  return { id: db.length + 1, projectName: newProject, tasks: [] }
+}
+
+export const editProjectHandle = (data) => {
+  if (data.id) {
     const db = JSON.parse(localStorage.getItem('db'))
     localStorage.setItem(
       'db',
-      JSON.stringify(db.concat({ projectName: newProject, tasks: [] }))
+      JSON.stringify(
+        db.map((projectObj) =>
+          projectObj.id == data.id
+            ? { ...projectObj, projectName: data.projectName }
+            : projectObj
+        )
+      )
     )
   }
-  return { projectName: newProject, tasks: [] }
+  return data
 }
 
-export const createTaskHandle = (event, projectName) => {
-  event.preventDefault()
-  const newTask = new FormData(event.target)
-  const res = {
-    title: newTask.get('taskTitle'),
-    description: newTask.get('taskDescription'),
-    date: newTask.get('taskDate'),
-    priority: newTask.get('taskPriority'),
+export const deleteProjectHandle = (projectID) => {
+  if (projectID) {
+    const db = JSON.parse(localStorage.getItem('db'))
+    localStorage.setItem(
+      'db',
+      JSON.stringify(db.filter((projectObj) => projectObj.id != projectID))
+    )
+  }
+}
+export const createTaskHandle = async (data) => {
+  const result = {
+    title: data.taskTitle,
+    description: data.taskDescription,
+    date: data.taskDate,
+    priority: data.taskPriority,
   }
 
   const db = JSON.parse(localStorage.getItem('db')) || []
-  const projectToUpdate = db.find((obj) => obj.projectName === projectName)
-  projectToUpdate.tasks.push(res)
+  const projectToUpdate = db.find((obj) => obj.projectName === data.projectName)
+  projectToUpdate.tasks.push({
+    id: projectToUpdate.tasks.length + 1,
+    ...result,
+  })
   localStorage.setItem(
     'db',
     JSON.stringify(
       db.map((projectObj) =>
-        projectObj.projectName === projectName ? projectToUpdate : projectObj
+        projectObj.projectName === data.projectName
+          ? projectToUpdate
+          : projectObj
       )
     )
   )
 
-  return res
+  return {
+    id: projectToUpdate.tasks.length,
+    ...result,
+    projectName: data.projectName,
+  }
+}
+
+export const editTaskHandle = (data) => {
+  console.log({ data })
+  const result = {
+    id: data.id,
+    title: data.taskTitle,
+    description: data.taskDescription,
+    date: data.taskDate,
+    priority: data.taskPriority,
+  }
+
+  const db = JSON.parse(localStorage.getItem('db')) || []
+  const projectToUpdate = db.find((obj) => obj.projectName == data.projectName)
+  console.log({ projectToUpdate })
+  projectToUpdate.tasks.map((task) => (task.id == result.id ? result : task))
+  localStorage.setItem(
+    'db',
+    JSON.stringify(
+      db.map((projectObj) =>
+        projectObj.projectName === data.projectName
+          ? projectToUpdate
+          : projectObj
+      )
+    )
+  )
+
+  return {
+    ...result,
+    projectName: data.projectName,
+  }
+}
+
+export const deleteTaskHandle = (data) => {
+  if (data.id && data.projectName) {
+    const db = JSON.parse(localStorage.getItem('db'))
+    const projectToUpdate = db.find(
+      (project) => project.projectName == data.projectName
+    )
+    projectToUpdate.tasks = projectToUpdate.tasks.filter(
+      (task) => task.id != data.id
+    )
+    localStorage.setItem(
+      'db',
+      JSON.stringify(
+        db.map((projectObj) =>
+          projectObj.projectName === data.projectName
+            ? projectToUpdate
+            : projectObj
+        )
+      )
+    )
+  }
 }
