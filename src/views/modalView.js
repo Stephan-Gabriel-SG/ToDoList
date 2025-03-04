@@ -156,10 +156,10 @@ export class ConfirmModal extends Modal {
           </div>
       </div>
     `
-    document.getElementById('modal-yes').addEventListener('click', () => {
+    document.getElementById('modal-yes').addEventListener('click', async () => {
       this.close(true)
     })
-    document.getElementById('modal-no').addEventListener('click', () => {
+    document.getElementById('modal-no').addEventListener('click', async () => {
       this.close(false)
     })
   }
