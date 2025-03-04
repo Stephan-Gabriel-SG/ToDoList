@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "projectName": "Default Project",
+    "tasks": [
+      {
+        "title": "Project initialization",
+        "date": "2025-02-28",
+        "status": false,
+        "description": "Set up the environment and initialize the Git repository.",
+        "priority": "High",
+        "id": 1
+      },
+      {
+        "title": "Create folder structure",
+        "date": "2025-03-01",
+        "status": true,
+        "description": "Organize the project folders (src, assets, components, etc.).",
+        "priority": "Medium",
+        "id": 2
+      },
+      {
+        "title": "Configure Webpack and Babel",
+        "date": "2025-03-02",
+        "status": false,
+        "description": "Set up Webpack for bundling and Babel for ES6 compatibility.",
+        "priority": "High",
+        "id": 3
+      },
+      {
+        "title": "Create the homepage",
+        "date": "2025-03-03",
+        "status": false,
+        "description": "Develop the homepage using HTML, CSS, and JavaScript.",
+        "priority": "Medium",
+        "id": 4
+      }
+    ]
+  }
+]
