@@ -1,0 +1,5 @@
+# Ignore artifacts:
+build
+coverage
+webpack.dev.js
+webpack.prod.js
