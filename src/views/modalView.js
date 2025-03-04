@@ -107,8 +107,8 @@ export class TaskModal extends Modal {
             <div class="title">Priority</div>
             <select name="taskPriority">
               <option value="Normal" ${taskPriority === 'Normal' ? 'selected' : ''}>Normal</option>
-              <option value="Middle" ${taskPriority === 'Middle' ? 'selected' : ''}>Middle</option>
               <option value="High" ${taskPriority === 'High' ? 'selected' : ''}>High</option>
+              <option value="Urgent" ${taskPriority === 'Urgent' ? 'selected' : ''}>Urgent</option>
             </select>
           </div>
           <div class='btn-content'>
