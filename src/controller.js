@@ -1,3 +1,5 @@
+import { updateNotificationNumber } from './utils'
+
 export const createProjectHandle = (data) => {
   const newProject = data.projectName
   let db
@@ -37,6 +39,7 @@ export const deleteProjectHandle = (projectID) => {
       'db',
       JSON.stringify(db.filter((projectObj) => projectObj.id != projectID))
     )
+    updateNotificationNumber()
   }
 }
 export const createTaskHandle = async (data) => {
@@ -63,7 +66,7 @@ export const createTaskHandle = async (data) => {
       )
     )
   )
-
+  updateNotificationNumber()
   return {
     id: projectToUpdate.tasks.length,
     ...result,
@@ -121,5 +124,27 @@ export const deleteTaskHandle = (data) => {
         )
       )
     )
+    updateNotificationNumber()
+  }
+}
+
+export const toggleTaskStatus = (projectName, taskId) => {
+  if (projectName && taskId) {
+    const db = JSON.parse(localStorage.getItem('db'))
+    const projectToUpdate = db.find(
+      (project) => project.projectName == projectName
+    )
+    projectToUpdate.tasks = projectToUpdate.tasks.map((task) =>
+      task.id == taskId ? { ...task, status: !task.status } : task
+    )
+    localStorage.setItem(
+      'db',
+      JSON.stringify(
+        db.map((projectObj) =>
+          projectObj.projectName === projectName ? projectToUpdate : projectObj
+        )
+      )
+    )
+    updateNotificationNumber()
   }
 }
