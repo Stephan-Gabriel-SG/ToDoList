@@ -37,13 +37,13 @@ export class ProjectModal extends Modal {
     this.edition = edition
     this.modal.innerHTML = `
       <div class="modal-content-project">
-        <span>${this.edition ? 'Edit Project' : 'New Project'}</span>
+        <span class='modal-title'>${this.edition ? 'Edit Project' : 'New Project'}</span>
         <form id='new-project'>
             <input type='hidden' name='id' value="${id}" />
-            <input name='projectName' minlength="3" id='new-project-name' placeholder='Project name' value="${projectName}" required/>
+            <input name='projectName' minlength="3" maxlength="10" id='new-project-name' placeholder='Project name' value="${projectName}" required/>
             <div class='btn-content'>
-              <input id='create' type='submit' value='${this.edition ? 'Confirm' : 'Create'}'/>
-              <input id='cancel' type='reset' value='Cancel'/>
+              <button id='create' type='submit'><i class='bx bxs-check-circle'></i>${this.edition ? 'Confirm' : 'Create'}</button>
+              <button id='cancel' type='reset'><i class='bx bxs-x-circle'></i>Cancel</button>
             </div>
         </form>
       </div>
@@ -87,33 +87,33 @@ export class TaskModal extends Modal {
 
     this.modal.innerHTML = `
       <div class="modal-content-task">
-        <span>${taskTitle ? 'Edit Task' : 'New Task'}</span>
+        <span class='modal-title'>${taskTitle ? 'Edit Task' : 'New Task'}</span>
         <form id="new-task">
           <input type="hidden" name="projectName" value="${projectName}"/>
           <input type="hidden" name="id" value="${id}"/>
           <div class="form-item">
-            <div class="title">Title</div>
-            <input type="text" name="taskTitle" required value="${taskTitle}"/>
+            <label class="title" for='taskTitle'>Title</label>
+            <input id='taskTitle' type="text" name="taskTitle" required value="${taskTitle}"/>
           </div>
           <div class="form-item">
-            <div class="title">Description</div>
-            <textarea name="taskDescription" maxlength="100" minlength="10" required>${taskDescription}</textarea>
+            <label class="title" for='taskDescription'>Description</label>
+            <textarea id='taskDescription' name="taskDescription" maxlength="100" minlength="10" required >${taskDescription}</textarea>
           </div>
           <div class="form-item">
-            <div class="title">Date</div>
-            <input type="date" name="taskDate" min=${lightFormat(new Date(), 'yyyy-MM-dd')} value=${lightFormat(new Date(taskDate), 'yyyy-MM-dd')} required/>
+            <label for='taskDate' class="title">Date</label>
+            <input id='taskDate' type="date" name="taskDate" min=${lightFormat(new Date(), 'yyyy-MM-dd')} value=${lightFormat(new Date(taskDate), 'yyyy-MM-dd')} required/>
           </div>
           <div class="form-item">
-            <div class="title">Priority</div>
-            <select name="taskPriority">
+            <label for='taskPriority' class="title">Priority</label>
+            <select id='taskPriority' name="taskPriority">
               <option value="Normal" ${taskPriority === 'Normal' ? 'selected' : ''}>Normal</option>
               <option value="High" ${taskPriority === 'High' ? 'selected' : ''}>High</option>
               <option value="Urgent" ${taskPriority === 'Urgent' ? 'selected' : ''}>Urgent</option>
             </select>
           </div>
           <div class='btn-content'>
-            <input id='create' type='submit' value='${taskTitle ? 'Edit' : 'Create'}'/>
-            <input id='cancel-new-task' type='reset' value='Cancel'/>
+             <button id='create' type='submit'><i class='bx bxs-check-circle'></i>${taskTitle ? 'Confirm' : 'Create'}</button>
+             <button id='cancel-new-task' type='reset'><i class='bx bxs-x-circle'></i>Cancel</button>
           </div>
         </form>
       </div>
@@ -151,8 +151,8 @@ export class ConfirmModal extends Modal {
           <span class="modal-title">${modalTitle}</span>
           <span class="modal-default-question">${modalContent}</span>
           <div class='btn-content'>
-            <input id='modal-yes' type='submit' value='Yes'/>
-            <input id='modal-no' type='reset' value='No'/>
+            <button id='modal-yes' type='submit'><i class='bx bxs-check-circle'></i>Yes</button/>
+            <button id='modal-no' type='reset'><i class='bx bxs-x-circle'></i>No</button/>
           </div>
       </div>
     `
