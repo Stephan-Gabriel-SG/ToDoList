@@ -35,13 +35,14 @@ export default class ProjectList extends View {
     const projectContainer = document.createElement('div')
     let projectName = newProjectObj.projectName
     projectContainer.innerHTML = `
-      <span id='project-${newProjectObj.id}' class='project-title'>${newProjectObj.projectName}</span>
-      <button id='edit-${newProjectObj.id}'>Edit</button>
-      <button id='del-${newProjectObj.id}'>Delete</button>
-      
+      <span id='project-${newProjectObj.id}' class='project-title limited-text' style="cursor:pointer;">${newProjectObj.projectName}</span>
+      <div class='project-item-button'>
+      <button class="hvr-grow" id='edit-${newProjectObj.id}'><i class='bx bxs-edit' ></i></button>
+      <button class="hvr-grow" id='del-${newProjectObj.id}'><i class='bx bxs-trash' ></i></button>
+      <div>
     `
     projectContainer.setAttribute('id', `project-${newProjectObj.id}`)
-    projectContainer.setAttribute('class', 'project-item')
+    projectContainer.setAttribute('class', 'menu-item project-item flex-center')
     projectContainer.addEventListener('click', () => {
       new ProjectPlanTask(
         '#view-container',
