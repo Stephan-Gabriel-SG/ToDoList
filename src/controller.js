@@ -75,7 +75,6 @@ export const createTaskHandle = async (data) => {
 }
 
 export const editTaskHandle = (data) => {
-  console.log({ data })
   const result = {
     id: data.id,
     title: data.taskTitle,
@@ -86,7 +85,6 @@ export const editTaskHandle = (data) => {
 
   const db = JSON.parse(localStorage.getItem('db')) || []
   const projectToUpdate = db.find((obj) => obj.projectName == data.projectName)
-  console.log({ projectToUpdate })
   projectToUpdate.tasks.map((task) => (task.id == result.id ? result : task))
   localStorage.setItem(
     'db',
