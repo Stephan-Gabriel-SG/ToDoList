@@ -15,13 +15,16 @@ export default class ToDoToday extends View {
 
   show() {
     this.render(`<h1>Task to do today</h1>
-      <div>
-          <select id='filter-task' name='filter-task'>
-              <option value='date[A-Z]'>date [A-Z]</option>
-              <option value='date[Z-A]'>date [Z-A]</option>
-              <option value='priority[A-Z]'>priority [A-Z]</option>
-              <option value='priority[Z-A]'>priority [Z-A]</option>
-          </select>
+      <div class="view-container-option">
+          <div class="filter-container flex-center fl-jc" style="font-size:.9rem;gap:5px;">
+              <i class='bx bx-filter' ></i> Filter by
+              <select id='filter-task' name='filter-task'>
+                  <option value='date[A-Z]'>date [A-Z]</option>
+                  <option value='date[Z-A]'>date [Z-A]</option>
+                  <option value='priority[A-Z]'>priority [A-Z]</option>
+                  <option value='priority[Z-A]'>priority [Z-A]</option>
+              </select>
+          </div>
       </div>
       <div id='task-list-container'></div>`)
 
