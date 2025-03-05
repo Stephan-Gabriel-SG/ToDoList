@@ -42,17 +42,24 @@ export default class Task extends View {
 
   update() {
     this.render(`
-      <span class="task-title">${this.title}<span>
-      <span class="task-description">${this.description}</span>
-      <span class="task-date">${this.date}</span>
-      <span class="task-priority">${this.priority}</span>
-      <label class="custom-checkbox">
-        <input type="checkbox" id='task-status-${this.id}' ${this.status ? 'checked' : ''}>
-        <span class="checkmark" ></span>
-        ${this.status}
-      </label>
-      <button class='btn-edit' id='btn-edit-${this.id}' >Edit</button>
-      <button class='btn-delete' id='btn-delete-${this.id}' >Delete</button>
+      <div class='regular-content'>
+        <label class="custom-checkbox">
+          <input type="checkbox" id="task-status-${this.id}" ${this.status ? 'checked' : ''}>
+          <span class="checkmark"></span>
+        </label>
+        <span class="task-title ${this.status ? 'task-finish' : ''}">${this.title}</span>
+        <button class="btn-detail" id="btn-detail-${this.id}">More</button>
+        <span class="task-date ${this.status ? 'task-finish' : ''}">${this.date}</span>
+        <span class="task-priority flex-center ${this.priority}"><i class='bx bxs-flag-alt'></i>${this.priority}</span>
+        <div class="btn-task-container flex-center fl-jc">
+          <button class="btn-edit task-btn" id="btn-edit-${this.id}"><i class='bx bxs-edit ' style=" ${this.status ? 'color:var(--red)' : ''}" ></i></button>
+          <button class="btn-delete task-btn" id="btn-delete-${this.id}"><i class='bx bxs-trash' style=" ${this.status ? 'color:var(--red)' : ''}"  ></i></button>
+        </div>
+      </div>
+      <div id="task-description-${this.id}" class='detail-content' style="display: none;">
+          <span class='task-description-title'>Task description</span>
+          <span>${this.description}</span>
+      </div>
       `)
     const btnEdit = document.getElementById(`btn-edit-${this.id}`)
     btnEdit.addEventListener('click', () => {
@@ -89,6 +96,14 @@ export default class Task extends View {
       toggleTaskStatus(this.projectName, this.id)
       this.status = !this.status
       this.update()
+    })
+    const btnDetail = document.getElementById(`btn-detail-${this.id}`)
+
+    btnDetail.addEventListener('click', () => {
+      const description = document.getElementById(`task-description-${this.id}`)
+      const isVisible = description.style.display === 'flex'
+      btnDetail.textContent = isVisible ? 'More' : 'Less'
+      description.style.display = isVisible ? 'none' : 'flex'
     })
   }
 }
