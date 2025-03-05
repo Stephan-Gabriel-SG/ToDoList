@@ -16,15 +16,18 @@ export default class ProjectPlanTask extends View {
   }
 
   show() {
-    this.render(`<h1>Tasks for ${this.projectName}</h1>
-      <div>
-          <button id='btn-new-task'>New task</button>
+    this.render(`<h1>${this.projectName} task list</h1>
+      <div class="view-container-option">
+          <button id='btn-new-task' class='hvr-grow'><i class='bx bxs-plus-circle' ></i> Add task</button>
+          <div class="filter-container flex-center fl-jc" style="font-size:.9rem;gap:5px;">
+          <i class='bx bx-filter' ></i> Filter by
           <select id='filter-task' name='filter-task'>
               <option value='date[A-Z]'>date [A-Z]</option>
               <option value='date[Z-A]'>date [Z-A]</option>
               <option value='priority[A-Z]'>priority [A-Z]</option>
               <option value='priority[Z-A]'>priority [Z-A]</option>
           </select>
+          </div>
       </div>
       <div id='task-list-container'></div>
     `)
@@ -34,7 +37,12 @@ export default class ProjectPlanTask extends View {
 
     const filterTask = document.getElementById('filter-task')
     filterTask.addEventListener('change', () => {
-      this.tasks = applyFilterToTask(filterTask.value, this.tasks)
+      this.tasks = applyFilterToTask(
+        filterTask.value,
+        JSON.parse(localStorage.getItem('db')).find(
+          (obj) => obj.id == this.projectID
+        ).tasks
+      )
       this.showTasks()
     })
 
