@@ -93,11 +93,11 @@ export class TaskModal extends Modal {
           <input type="hidden" name="id" value="${id}"/>
           <div class="form-item">
             <label class="title" for='taskTitle'>Title</label>
-            <input id='taskTitle' type="text" name="taskTitle" required value="${taskTitle}"/>
+            <input id='taskTitle' type="text" name="taskTitle" minlength="3" maxlength="28" required value="${taskTitle}"/>
           </div>
           <div class="form-item">
             <label class="title" for='taskDescription'>Description</label>
-            <textarea id='taskDescription' name="taskDescription" maxlength="100" minlength="10" required >${taskDescription}</textarea>
+            <textarea id='taskDescription' name="taskDescription" maxlength="120" minlength="10" required >${taskDescription}</textarea>
           </div>
           <div class="form-item">
             <label for='taskDate' class="title">Date</label>
