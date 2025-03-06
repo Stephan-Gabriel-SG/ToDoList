@@ -1,4 +1,3 @@
-// import 'hover.css/css/hover-min.css'
 import 'boxicons/css/boxicons.min.css'
 import '@fontsource-variable/inter'
 import db from './db.json'
@@ -9,7 +8,9 @@ import ForgottenTask from './views/forgottenView'
 import DoneTask from './views/doneView'
 import { activateMenu, updateNotificationNumber } from './utils'
 
-localStorage.setItem('db', JSON.stringify(db))
+if (!localStorage.getItem('db')) {
+  localStorage.setItem('db', JSON.stringify(db))
+}
 new ToDoToday('#view-container').show()
 new DoneTask('#view-container')
 new ForgottenTask('#view-container')
