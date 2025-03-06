@@ -102,6 +102,7 @@ button {
   grid-column: 1;
   height: 100vh;
   background-color: var(--blue4-color);
+  box-shadow: -1px 0 5px 0 var(--main-color);
   transition:
     transform 0.8s ease-in-out,
     width 0.5s ease-in-out;
