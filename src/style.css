@@ -54,10 +54,17 @@ nav {
   margin-right: 20px;
   position: absolute;
   right: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-button#toggle-sidebar i {
+button#toggle-sidebar i,
+nav a i {
   color: var(--white-color);
   font-size: 2em;
+}
+nav a i {
+  font-size: 1.8em;
 }
 i {
   font-size: 1.3rem;
@@ -93,7 +100,8 @@ button {
   display: flex;
   flex-direction: column;
   grid-column: 1;
-  background-color: var(--gray-color);
+  height: 100vh;
+  background-color: var(--blue4-color);
   transition:
     transform 0.8s ease-in-out,
     width 0.5s ease-in-out;
@@ -148,7 +156,8 @@ button span {
 #project-container {
   width: 80%;
   overflow-y: scroll;
-  max-height: 400px;
+  max-height: 360px;
+  margin-top: 8px;
 }
 
 .project-item {
@@ -488,6 +497,14 @@ textarea#taskDescription {
   }
 }
 
+/* footer */
+footer {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-weight: 700;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   #container {
@@ -495,7 +512,6 @@ textarea#taskDescription {
   }
   .sidebar-menu {
     position: absolute;
-    height: calc(100vh - 60px);
     z-index: 2;
     background-color: var(--white-color);
     transition:
@@ -551,5 +567,8 @@ textarea#taskDescription {
   span.task-priority {
     gap: 5px;
     font-size: 0.8rem;
+  }
+  #project-container {
+    max-height: 300px;
   }
 }
