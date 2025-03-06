@@ -84,18 +84,20 @@ export const editTaskHandle = (data) => {
   }
 
   const db = JSON.parse(localStorage.getItem('db')) || []
-  const projectToUpdate = db.find((obj) => obj.projectName == data.projectName)
-  projectToUpdate.tasks.map((task) => (task.id == result.id ? result : task))
-  localStorage.setItem(
-    'db',
-    JSON.stringify(
-      db.map((projectObj) =>
-        projectObj.projectName === data.projectName
-          ? projectToUpdate
-          : projectObj
-      )
-    )
+
+  const projectIndex = db.findIndex(
+    (obj) => obj.projectName === data.projectName
   )
+
+  if (projectIndex === -1) {
+    console.error('Projet non trouvé :', data.projectName)
+    return null
+  }
+
+  db[projectIndex].tasks = db[projectIndex].tasks.map((task) =>
+    task.id == result.id ? result : task
+  )
+  localStorage.setItem('db', JSON.stringify(db))
 
   return {
     ...result,
