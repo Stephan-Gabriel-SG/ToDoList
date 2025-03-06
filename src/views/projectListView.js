@@ -35,7 +35,7 @@ export default class ProjectList extends View {
     const projectContainer = document.createElement('div')
     let projectName = newProjectObj.projectName
     projectContainer.innerHTML = `
-      <span id='project-${newProjectObj.id}' class='project-title limited-text' style="cursor:pointer;">${newProjectObj.projectName}</span>
+      <span id='project-title-${newProjectObj.id}' class='project-title limited-text' style="cursor:pointer;">${newProjectObj.projectName}</span>
       <div class='project-item-button'>
       <button class="hvr-grow" id='edit-${newProjectObj.id}'><i class='bx bxs-edit' ></i></button>
       <button class="hvr-grow" id='del-${newProjectObj.id}'><i class='bx bxs-trash' ></i></button>
@@ -61,8 +61,9 @@ export default class ProjectList extends View {
         })
         editProjectModal.show().then((result) => {
           if (result) {
-            document.getElementById(`project-${newProjectObj.id}`).innerText =
-              result.projectName
+            document.getElementById(
+              `project-title-${newProjectObj.id}`
+            ).innerText = result.projectName
             projectName = result.projectName
             new ProjectPlanTask('#view-container', result.id).show()
           }
