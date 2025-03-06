@@ -34,6 +34,134 @@
         "description": "Develop the homepage using HTML, CSS, and JavaScript.",
         "priority": "Normal",
         "id": 4
+      },
+      {
+        "title": "Implement dark mode",
+        "date": "2025-03-06",
+        "status": false,
+        "description": "Add dark mode toggle and save preference.",
+        "priority": "High",
+        "id": 5
+      },
+      {
+        "title": "Setup ESLint and Prettier",
+        "date": "2025-03-07",
+        "status": false,
+        "description": "Configure ESLint and Prettier for code consistency.",
+        "priority": "Normal",
+        "id": 6
+      },
+      {
+        "title": "Optimize images",
+        "date": "2025-03-08",
+        "status": false,
+        "description": "Compress and optimize images for performance.",
+        "priority": "Normal",
+        "id": 7
+      },
+      {
+        "title": "Deploy to Netlify",
+        "date": "2025-03-10",
+        "status": false,
+        "description": "Setup CI/CD and deploy to Netlify.",
+        "priority": "Urgent",
+        "id": 8
+      },
+      {
+        "title": "Test responsive design",
+        "date": "2025-03-11",
+        "status": false,
+        "description": "Ensure the site is responsive on all devices.",
+        "priority": "High",
+        "id": 9
+      },
+      {
+        "title": "Improve accessibility",
+        "date": "2025-03-12",
+        "status": false,
+        "description": "Check contrast, ARIA roles, and keyboard navigation.",
+        "priority": "Normal",
+        "id": 10
+      },
+      {
+        "title": "Setup unit testing",
+        "date": "2025-03-13",
+        "status": false,
+        "description": "Implement Jest for unit testing components.",
+        "priority": "High",
+        "id": 11
+      },
+      {
+        "title": "Write project README",
+        "date": "2025-03-14",
+        "status": false,
+        "description": "Create a detailed README for documentation.",
+        "priority": "Normal",
+        "id": 12
+      },
+      {
+        "title": "Create contact page",
+        "date": "2025-03-15",
+        "status": false,
+        "description": "Develop the contact form and backend API.",
+        "priority": "Normal",
+        "id": 13
+      },
+      {
+        "title": "Setup database schema",
+        "date": "2025-03-16",
+        "status": false,
+        "description": "Define tables and relationships in the database.",
+        "priority": "Urgent",
+        "id": 14
+      },
+      {
+        "title": "Implement authentication",
+        "date": "2025-03-17",
+        "status": false,
+        "description": "Add login and registration functionality.",
+        "priority": "High",
+        "id": 15
+      },
+      {
+        "title": "Refactor CSS styles",
+        "date": "2025-03-18",
+        "status": false,
+        "description": "Clean up CSS and use variables for consistency.",
+        "priority": "Urgent",
+        "id": 16
+      },
+      {
+        "title": "Optimize API requests",
+        "date": "2025-03-19",
+        "status": false,
+        "description": "Reduce redundant API calls and improve caching.",
+        "priority": "High",
+        "id": 17
+      },
+      {
+        "title": "Setup error handling",
+        "date": "2025-03-20",
+        "status": false,
+        "description": "Improve error messages and exception handling.",
+        "priority": "Normal",
+        "id": 18
+      },
+      {
+        "title": "Add user profile page",
+        "date": "2025-03-21",
+        "status": false,
+        "description": "Develop a page for user account settings.",
+        "priority": "Normal",
+        "id": 19
+      },
+      {
+        "title": "Finalize project testing",
+        "date": "2025-03-22",
+        "status": false,
+        "description": "Conduct full project testing before release.",
+        "priority": "Urgent",
+        "id": 20
       }
     ]
   }
