@@ -50,3 +50,24 @@ export function updateNotificationNumber() {
   document.getElementById('done-notif').innerText = result.done
   document.getElementById('forgotten-notif').innerText = result.forgotten
 }
+
+export function activateMenu() {
+  const menuContainer = document.querySelector('.menu')
+
+  if (!menuContainer) return
+
+  menuContainer.removeEventListener('click', handleMenuClick)
+  menuContainer.addEventListener('click', handleMenuClick)
+}
+
+function handleMenuClick(event) {
+  const target = event.target.closest('.menu-item')
+
+  if (!target) return
+
+  document
+    .querySelectorAll('.menu-item')
+    .forEach((btn) => btn.classList.remove('active'))
+
+  target.classList.add('active')
+}
