@@ -7,21 +7,33 @@
   </head>
   <body>
     <header>
-      <span>ToDo-N</span>
+      <span class="logo">ToDo-N</span>
       <nav>
-        <button>side-bar</button>
-        <button>dark-mode</button>
+        <button id="toggle-sidebar">
+          <i class="bx bx-sidebar hvr-grow"></i>
+        </button>
+        <!-- <button>dark-mode</button> -->
       </nav>
     </header>
     <div id="container">
-      <div class="sidebar-menu">
-        <button id="today-task">Today</button>
-        <button id="done-task">Done</button>
-        <button id="forgotten-task">Forgotten</button>
-        <hr />
-        <span>My Projects</span>
-        <div id="project-container"></div>
-        <button id="btn-new-project">new project</button>
+      <div class="sidebar-menu flex-center">
+        <div class="menu sticky-content">
+          <button id="today-task" class="menu-item nav-button active">
+            Today
+          </button>
+          <button id="done-task" class="menu-item nav-button">Done</button>
+          <button id="forgotten-task" class="menu-item nav-button">
+            Forgotten
+          </button>
+          <span class="my-project-section">My Projects</span>
+          <div id="project-container" class="menu"></div>
+          <button
+            id="btn-new-project"
+            class="flex-center fx-jc space-top hvr-grow"
+          >
+            <i class="bx bxs-plus-circle"></i>New project
+          </button>
+        </div>
       </div>
       <div id="view-container"></div>
     </div>
