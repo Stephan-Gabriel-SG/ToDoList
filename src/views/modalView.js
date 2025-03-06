@@ -40,7 +40,7 @@ export class ProjectModal extends Modal {
         <span class='modal-title'>${this.edition ? 'Edit Project' : 'New Project'}</span>
         <form id='new-project'>
             <input type='hidden' name='id' value="${id}" />
-            <input name='projectName' minlength="3" maxlength="10" id='new-project-name' placeholder='Project name' value="${projectName}" required/>
+            <input name='projectName' minlength="3" maxlength="18" id='new-project-name' placeholder='Project name' value="${projectName}" required/>
             <div class='btn-content'>
               <button id='create' type='submit'><i class='bx bxs-check-circle'></i>${this.edition ? 'Confirm' : 'Create'}</button>
               <button id='cancel' type='reset'><i class='bx bxs-x-circle'></i>Cancel</button>

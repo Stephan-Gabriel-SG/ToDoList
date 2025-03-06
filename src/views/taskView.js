@@ -1,3 +1,4 @@
+import { lightFormat } from 'date-fns'
 import { deleteTaskHandle, toggleTaskStatus } from '../controller'
 import { ConfirmModal, TaskModal as EditTaskModal } from './modalView'
 import View from './view'
@@ -49,7 +50,7 @@ export default class Task extends View {
         </label>
         <span class="task-title ${this.status ? 'task-finish' : ''}">${this.title}</span>
         <button class="btn-detail" id="btn-detail-${this.id}">More</button>
-        <span class="task-date ${this.status ? 'task-finish' : ''}">${this.date}</span>
+        <span class="task-date ${this.status ? 'task-finish' : ''}">${lightFormat(this.date, 'MM-dd-yyyy')}</span>
         <span class="task-priority flex-center ${this.priority}"><i class='bx bxs-flag-alt'></i>${this.priority}</span>
         <div class="btn-task-container flex-center fl-jc">
           <button class="btn-edit task-btn" id="btn-edit-${this.id}"><i class='bx bxs-edit ' style=" ${this.status ? 'color:var(--red)' : ''}" ></i></button>

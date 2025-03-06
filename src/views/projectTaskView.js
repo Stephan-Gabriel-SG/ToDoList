@@ -16,7 +16,7 @@ export default class ProjectPlanTask extends View {
   }
 
   show() {
-    this.render(`<h1>${this.projectName} task list</h1>
+    this.render(`<h1>${this.projectName} - Task List</h1>
       <div class="view-container-option">
           <button id='btn-new-task' class='hvr-grow'><i class='bx bxs-plus-circle' ></i> Add task</button>
           <div class="filter-container flex-center fl-jc" style="font-size:.9rem;gap:5px;">

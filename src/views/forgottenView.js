@@ -13,7 +13,7 @@ export default class ForgottenTask extends View {
   }
 
   show() {
-    this.render(`<h1>Forgotten task</h1>
+    this.render(`<h1>Overdue Tasks</h1>
       <div class="view-container-option">
           <div class="filter-container flex-center fl-jc" style="font-size:.9rem;gap:5px;">
               <i class='bx bx-filter' ></i> Filter by
